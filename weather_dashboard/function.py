@@ -1,3 +1,4 @@
+import datetime
 import boto3
 import requests
 import json
@@ -48,9 +49,10 @@ def get_weather_details(city, base_url, api_key):
 def save_to_s3(data, path, city, bucket_name):
     json_data = json.dumps(data)
     try:
+        timestamp = datetime.now().strftime('%Y%m%d-%H%M%S')
         s3_client.put_object(
             Bucket=bucket_name,
-            Key=f'{path}/{city}.json',
+            Key=f'{path}/{city}-{timestamp}.json',
             Body=json_data,
             ContentType='application/json',
         )

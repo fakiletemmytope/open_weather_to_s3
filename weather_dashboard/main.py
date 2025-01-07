@@ -19,7 +19,7 @@ def retrieve_and_save():
     key = os.getenv("APIKEY")
     region = os.getenv("REGION")
 
-    cities = ["Abuja", "Cairo", "Ankara"]
+    cities = ["accra", "tunis", "algiers"]
 
     if not bucket_exist(bucket_name):
         create_bucket(bucket_name, region)
